@@ -1,0 +1,66 @@
+<?php
+try {
+    $pdo = new PDO("mysql:host=localhost;dbname=hotel_db;charset=utf8", "root", "");
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    // Receive form data
+    $name = trim($_POST['name']);
+    $email = trim($_POST['email']);
+    $telephone = trim($_POST['telephone']);
+    $checkin = $_POST['checkin'];
+    $checkout = $_POST['checkout'];
+    $guests = (int)$_POST['guests'];
+
+    // --- VALIDATION ---
+    $errors = [];
+
+    if (empty($name)) $errors[] = "Izina ntirikwiye kuba ubusa.";
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) $errors[] = "Email siyo.";
+    if (!preg_match('/^\+?[0-9]{7,15}$/', $telephone)) $errors[] = "Telephone igomba kuba imibare, urugero: +250781234567.";
+    if ($guests < 1) $errors[] = "Guests bagomba kuba nibura umwe.";
+
+    $checkin_time = strtotime($checkin);
+    $checkout_time = strtotime($checkout);
+    if ($checkout_time <= $checkin_time) {
+        $errors[] = "Check-out igomba kuba nyuma ya Check-in.";
+    }
+
+    if (!empty($errors)) {
+        echo "<h3 style='color:red;text-align:center;'>Hari amakosa:</h3>";
+        echo "<ul style='color:red;text-align:center;'>";
+        foreach ($errors as $err) {
+            echo "<li>$err</li>";
+        }
+        echo "</ul>";
+        echo "<p style='text-align:center;'><a href='booking.html'>Subira ku Form</a></p>";
+        exit;
+    }
+
+    // Calculate days
+    $days = ($checkout_time - $checkin_time) / (60*60*24);
+
+    // Automatic room type + amount
+    if ($guests <= 2) {
+        $room_type = "Standard";
+        $amount = $days * 50000;
+    } elseif ($guests <= 4) {
+        $room_type = "Deluxe";
+        $amount = $days * 80000;
+    } else {
+        $room_type = "Family";
+        $amount = $days * 120000;
+    }
+
+    // Insert booking
+    $stmt = $pdo->prepare("INSERT INTO bookings 
+        (name, email, telephone, checkin, checkout, guests, amount, room_type, status) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'Pending')");
+    $stmt->execute([$name, $email, $telephone, $checkin, $checkout, $guests, $amount, $room_type]);
+
+    echo "<h2 style='color:green;text-align:center;'>Murakoze kubooking! Tuzabahuza vuba.</h2>";
+    echo "<p style='text-align:center;'><a href='admin.php'>Reba mu Admin</a></p>";
+
+} catch (Exception $e) {
+    die("Error: " . $e->getMessage());
+}
+?>

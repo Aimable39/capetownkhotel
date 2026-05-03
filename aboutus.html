@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cape Town K Hotel</title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; }
+
+    /* Navbar */
+    .navbar {
+      display: flex; justify-content: space-between; align-items: center;
+      background: white; padding: 15px 40px; position: sticky; top: 0;
+      z-index: 1000; border-radius: 50px;
+      border: 2px solid black; box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    }
+    .logo img { height: 50px; width: auto; }
+    .header-title { font-size: 20px; font-weight: bold; color: #2c3e50; text-align: center; flex-grow: 1; }
+    .nav-links { list-style: none; display: flex; gap: 25px; margin: 0; padding: 0; }
+    .nav-links li { position: relative; }
+    .nav-links li a { color: #2c3e50; text-decoration: none; font-weight: bold; }
+    .nav-links li a:hover { color: #3498db; border-bottom: 2px solid #3498db; }
+
+    /* Dropdown */
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%; left: 0;
+      background: white;
+      list-style: none;
+      padding: 10px 0;
+      margin: 0;
+      border: 1px solid #ccc;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      border-radius: 5px;
+      min-width: 180px;
+    }
+    .dropdown-menu li { padding: 8px 20px; }
+    .dropdown-menu li a { color: #2c3e50; text-decoration: none; display: block; }
+    .dropdown-menu li a:hover { background: #f4f4f4; color: #3498db; }
+    .nav-links li:hover .dropdown-menu { display: block; }
+
+    /* Slideshow */
+    .slideshow { position: relative; width: 100%; height: 400px; overflow: hidden; background: #000; }
+    .slide { position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out; }
+    .slide.active { opacity: 1; z-index: 1; }
+    .slide img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+
+    /* Rooms */
+    .rooms { padding: 40px; text-align: center; }
+    .rooms h2 { margin-bottom: 20px; font-size: 28px; color: #2c3e50; }
+    .room-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .room-card { background: #f4f4f4; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.2); transition: transform 0.3s; padding-bottom: 15px; }
+    .room-card:hover { transform: scale(1.05); }
+    .room-card img { width: 100%; height: 200px; object-fit: cover; }
+    .btn { display: inline-block; background: #e67e22; color: white; padding: 8px 15px; text-decoration: none; border-radius: 5px; margin-top: 10px; }
+    .btn:hover { background: #d35400; }
+
+    /* Testimonials */
+    .testimonials { max-width:800px; margin:40px auto; text-align:center; }
+    .testimonials h2 { color:#3498db; margin-bottom:20px; }
+    .testimonial-container { position:relative; overflow:hidden; }
+    .testimonial-slide { display:none; animation:fade 1s; }
+    .testimonial-slide.active { display:block; }
+    .profile-img { width:80px; height:80px; border-radius:50%; object-fit:cover; margin-bottom:10px; }
+    .testimonial-controls { margin-top:15px; }
+    .testimonial-controls button { background:#3498db; color:white; border:none; padding:8px 12px; cursor:pointer; border-radius:5px; }
+    .testimonial-controls button:hover { background:#2980b9; }
+    @keyframes fade { from{opacity:0;} to{opacity:1;} }
+
+    /* Footer */
+    footer { background:#333; color:white; text-align:center; padding:20px; margin-top:40px; }
+    footer a { color:#3498db; text-decoration:none; }
+    footer a:hover { text-decoration:underline; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .room-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .room-grid { grid-template-columns: 1fr; }
+      .nav-links { flex-direction: column; gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo"><img src="12.png" alt="Hotel Logo"></div>
+    <div class="header-title">Cape K Town Hotel</div>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="aboutus.html">About Us</a></li>
+      <li class="dropdown">
+        <a href="#">Rooms</a>
+        <ul class="dropdown-menu">
+          <li><a href="twin.html">Twin Room</a></li>
+          <li><a href="standard.html">Standard Room</a></li>
+          <li><a href="family.html">Family Room</a></li>
+          <li><a href="deluxe.html">Deluxe Room</a></li>
+        </ul>
+      </li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="ourservices.html">Our Service</a></li>
+      <li><a href="#">Location/Map</a></li>
+    </ul>
+  </nav>
+
+  <!-- Slideshow -->
+  <section class="slideshow">
+    <div class="slide active"><img src="1.png" alt="Deluxe Room"></div>
+    <div class="slide"><img src="2.png" alt="Executive Suite"></div>
+    <div class="slide"><img src="3.png" alt="Presidential Suite"></div>
+    <div class="slide"><img src="4.png" alt="Dining Area"></div>
+  </section>
+
+  <!-- Rooms -->
+  <section class="rooms">
+    <h2>Available Rooms</h2>
+    <div class="room-grid">
+      <div class="room-card"><img src="t.png"><h3>Twin Room</h3><p>Elegant design with modern amenities.</p><a href="deluxe.html" class="btn">Read More</a></div>
+      <div class="room-card"><img src="s.png"><h3>Standard Room</h3><p>Comfortable and affordable option.</p><a href="standard.html" class="btn">Read More</a></div>
+      <div class="room-card"><img src="f.png"><h3>Family Room</h3><p>Spacious room for families.</p><a href="family.html" class="btn">Read More</a></div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials">
+    <h2>What Guests Are Saying</h2>
+    <div class="testimonial-container">
+      <div class="testimonial-slide active">
+        <img src="alice.png" alt="Guest 1" class="profile-img">
+        <h3>Alice M.</h3>
+        <p>"The staff were incredibly kind and welcoming."</p>
+      </div>
+      <div class="testimonial-slide">
+        <img src="k.png" alt="Guest 2" class="profile-img">
+        <h3>John K.</h3>
+        <p>"The staff went above and beyond to make our stay unforgettable."</p>
+      </div>
+      <div class="testimonial-slide">
+        <img src="fifi.png" alt="Guest 3" class="profile-img">
+        <h3>Maria S.</h3>
+        <p>"The food was delicious and the service outstanding."</p>
+      </div>
+      <div class="testimonial-slide">
+        <img src="john.png" alt="Guest 4" class="profile-img

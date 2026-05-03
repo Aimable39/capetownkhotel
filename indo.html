@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lemigo Style Hotel</title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: white;
+      padding: 15px 40px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-radius: 50px;
+      border: 2px solid black;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    }
+
+    .logo img {
+      height: 50px;
+      width: auto;
+    }
+
+    .header-title {
+      font-size: 20px;
+      font-weight: bold;
+      color: #2c3e50;
+      text-align: center;
+      flex-grow: 1;
+    }
+
+    .nav-links { list-style: none; display: flex; gap: 25px; margin: 0; padding: 0; }
+    .nav-links li { position: relative; }
+    .nav-links li a { color: #2c3e50; text-decoration: none; font-weight: bold; }
+    .nav-links li a:hover { color: #3498db; border-bottom: 2px solid #3498db; }
+
+    .dropdown-menu {
+      display: none; position: absolute; top: 100%; left: 0;
+      background: #2c3e50; list-style: none; padding: 10px 0;
+      min-width: 180px; box-shadow: 0 4px 6px rgba(0,0,0,0.3); border-radius: 10px;
+    }
+    .dropdown:hover .dropdown-menu { display: block; }
+    .dropdown-menu li a { color: white; text-decoration: none; font-size: 14px; display: block; padding: 8px 20px; }
+    .dropdown-menu li a:hover { background: #34495e; color: #f1c40f; }
+
+    footer { background: #333; color: white; text-align: center; padding: 20px; }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <nav class="navbar">
+      <div class="logo"><img src="12.png" alt="Hotel Logo"></div>
+      <div class="header-title">Cape Town Hotel Website</div>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About Us</a></li>
+        <li class="dropdown">
+          <a href="#">Rooms ▾</a>
+          <ul class="dropdown-menu">
+            <li><a href="deluxe.html">Deluxe Room</a></li>
+            <li><a href="standard.html">Standard Room</a></li>
+            <li><a href="family.html">Family Room</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Dining</a></li>
+        <li><a href="#">Spa</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Hotel Example | Kigali, Rwanda</p>
+    <p>Email: info@example.com | Phone: +250 700 000 000</p>
+  </footer>
+</body>
+</html>

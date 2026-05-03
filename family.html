@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="rw">
+<head>
+  <meta charset="UTF-8">
+  <title>Cape Town Hotel</title>
+  <style>
+    body { margin:0; font-family:Arial,sans-serif; background:#f9f9f9; }
+    .navbar { display:flex; justify-content:space-between; align-items:center;
+      background:white; padding:15px 40px; position:sticky; top:0;
+      border-radius:50px; border:2px solid black;
+      box-shadow:0 4px 8px rgba(0,0,0,0.5); }
+    .logo img { height:50px; }
+    .header-title { font-size:20px; font-weight:bold; color:#2c3e50; flex-grow:1; text-align:center; }
+    .nav-links { list-style:none; display:flex; gap:25px; margin:0; padding:0; }
+    .nav-links li a { color:#2c3e50; text-decoration:none; font-weight:bold; }
+    .nav-links li a:hover { color:#3498db; border-bottom:2px solid #3498db; }
+
+    .top-cards { display:flex; gap:20px; justify-content:center; margin:40px auto; flex-wrap:wrap; }
+    .room-card { background:white; border-radius:12px; box-shadow:0 3px 8px rgba(0,0,0,0.15);
+      padding:20px; max-width:450px; flex:1; }
+    .room-card img { width:100%; height:250px; object-fit:cover; border-radius:8px; }
+    .book-btn { font-size:15px; padding:10px 25px; background:linear-gradient(135deg,#4facfe,#00f2fe);
+      color:white; border:none; border-radius:30px; cursor:pointer; }
+    .book-btn:hover { transform:scale(1.05); }
+
+    .photo-cards { display:flex; gap:20px; justify-content:center; margin:40px auto; flex-wrap:wrap; }
+    .photo-card img { width:100%; max-width:400px; height:280px;
+      object-fit:cover; border-radius:12px; box-shadow:0 3px 8px rgba(0,0,0,0.15); }
+
+    footer { background:#333; color:white; text-align:center; padding:20px; }
+
+    .booking-section { max-width: 700px; margin: 40px auto; background: #fff;
+      padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+    .booking-section h2 { text-align: center; color: #3498db; margin-bottom: 20px; }
+    .form-row { display:flex; justify-content:space-between; margin-bottom:15px; }
+    .form-row label { flex:1; font-weight:bold; color:#2c3e50; }
+    .form-row input { flex:2; padding:10px; border:1px solid #ccc; border-radius:8px; }
+    .booking-form button { width:100%; padding:12px; background:linear-gradient(135deg,#4facfe,#00f2fe);
+      color:white; border:none; border-radius:30px; font-size:16px; cursor:pointer;
+      transition:transform 0.2s; margin-top:15px; }
+    .booking-form button:hover { transform:scale(1.05); }
+
+    #billCard { display:none; margin-top:20px; padding:20px; border:1px solid #ccc;
+      border-radius:10px; background:#fdfdfd; box-shadow:0 4px 10px rgba(0,0,0,0.1); }
+    #billCard h3 { text-align:center; color:#27ae60; margin-bottom:15px; }
+    #billCard table { width:100%; border-collapse:collapse; }
+    #billCard table td { padding:8px; border-bottom:1px solid #eee; }
+    #billCard table td:first-child { font-weight:bold; color:#2c3e50; }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo"><img src="12.png" alt="Hotel Logo"></div>
+      <div class="header-title">Cape Town Hotel Website</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li><li><a href="#">About Us</a></li>
+        <li><a href="#">Rooms</a></li><li><a href="#">Dining</a></li>
+        <li><a href="#">Spa</a></li><li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="top-cards">
+    <div class="room-card">
+      <img src="t.png" alt="Double Room">
+      <h2>Familly Room 1200$ (1.800.000 RWF)/Month</h2>
+      <p>Comfortable 35 sqm space with 1 bed, free breakfast, and sauna massage,.</p>
+      <button class="book-btn" type="button" onclick="document.getElementById('bookingSection').scrollIntoView({behavior:'smooth'})">Book Now</button>
+    </div>
+  </div>
+
+  <div class="photo-cards">
+    <div class="photo-card"><img src="9.png" alt="Hotel View"></div>
+    <div class="photo-card"><img src="8.png" alt="Dining Area"></div>
+    <div class="photo-card"><img src="7.png" alt="Spa"></div>
+  </div>
+
+  <section id="bookingSection" class="booking-section">
+    <h2>Booking Form</h2>
+    <form id="bookingForm" class="booking-form">
+      <div class="form-row"><label>Izina:</label><input type="text" name="name" required></div>
+      <div class="form-row"><label>Email:</label><input type="email" name="email" required></div>
+      <div class="form-row"><label>Telephone:</label><input type="tel" name="telephone" required></div>
+      <div class="form-row"><label>Check-in:</label><input type="date" name="checkin" required></div>
+      <div class="form-row"><label>Check-out:</label><input type="date" name="checkout" required></div>
+      <div class="form-row"><label>Guests:</label><input type="number" name="guests" min="1" required></div>
+      <button type="submit">Confirm Booking</button>
+    </form>
+
+    <div id="billCard">
+      <h3>Booking Bill</h3>
+      <table>
+        <tr><td colspan="2" id="billMessage" style="color:green; font-weight:bold; text-align:center;"></td></tr>
+        <tr><td>Izina</td><td id="billName"></td></tr>
+        <tr><td>Email</td><td id="billEmail"></td></tr>
+        <tr><td>Telephone</td><td id="billTelephone"></td></tr>
+        <tr><td>Iminsi</td><td id="billDays"></td></tr>
+        <tr><td>Guests</td><td id="billGuests"></td></tr>
+        <tr><td>Total</td><td id="billTotal"></td></tr>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Hotel Example | Kigali, Rwanda</p>
+    <p>Email: info@example.com</p>
+  </footer>
+
+  <script>
+    document.getElementById("bookingForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      const formData = new FormData(this);
+      fetch("bookinggg.php", { method: "POST", body: formData })
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById("billMessage").innerText = data.message;
+        document.getElementById("billName").innerText = data.name;
+        document.getElementById("billEmail").innerText = data.email;
+        document.getElementById("billTelephone").innerText = data.telephone;
+        document.getElementById("billDays").innerText = data.days;
+        document.getElementById("billGuests").innerText = data.guests;
+        document.getElementById("billTotal").innerText = data.totalUSD + " USD (~" + data.totalRWF + " RWF)";
+        document.getElementById("billCard").style.display = "block";
+      })
+      .catch(error => console.error("Error:", error));
+    });
+  </script>
+</body>
+</html>

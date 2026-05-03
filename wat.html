@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="rw">
+<head>
+  <meta charset="UTF-8">
+  <title>What Guests Are Saying</title>
+  <style>
+    body { font-family:Arial,sans-serif; background:#f9f9f9; margin:0; padding:20px; }
+    h2 { text-align:center; color:#3498db; margin-bottom:30px; }
+
+    .testimonial-section { max-width:900px; margin:auto; position:relative; overflow:hidden; }
+    .slides { display:flex; transition:transform 0.8s ease-in-out; }
+    .testimonial-card { flex-shrink:0; width:100%; background:white; border-radius:12px;
+      box-shadow:0 3px 8px rgba(0,0,0,0.15); padding:20px; text-align:center; }
+    .profile-img { width:80px; height:80px; border-radius:50%; object-fit:cover; margin-bottom:15px; }
+    .guest-name { font-weight:bold; color:#2c3e50; margin-bottom:10px; }
+    .guest-text { font-style:italic; color:#555; }
+
+    .controls { position:absolute; top:50%; width:100%; display:flex; justify-content:space-between; }
+    .controls button { background:rgba(0,0,0,0.5); color:white; border:none; padding:10px; cursor:pointer; }
+  </style>
+</head>
+<body>
+  <h2>What Guests Are Saying</h2>
+  <div class="testimonial-section">
+    <div class="slides" id="testimonialSlides">
+      <!-- Card 1 -->
+      <div class="testimonial-card">
+        <img src="guest1.jpg" alt="Guest 1" class="profile-img">
+        <div class="guest-name">Alice M.</div>
+        <div class="guest-text">“The staff were incredibly kind and welcoming. I felt at home instantly.”</div>
+      </div>
+      <!-- Card 2 -->
+      <div class="testimonial-card">
+        <img src="guest2.jpg" alt="Guest 2" class="profile-img">
+        <div class="guest-name">John K.</div>
+        <div class="guest-text">“Beautiful gardens and peaceful atmosphere. Perfect for relaxation.”</div>
+      </div>
+      <!-- Card 3 -->
+      <div class="testimonial-card">
+        <img src="guest3.jpg" alt="Guest 3" class="profile-img">
+        <div class="guest-name">Maria S.</div>
+        <div class="guest-text">“The food was delicious and the service outstanding. Highly recommend.”</div>
+      </div>
+      <!-- Card 4 -->
+      <div class="testimonial-card">
+        <img src="guest4.jpg" alt="Guest 4" class="profile-img">
+        <div class="guest-name">David R.</div>
+        <div class="guest-text">“Conference facilities were excellent, everything ran smoothly.”</div>
+      </div>
+    </div>
+    <div class="controls">
+      <button onclick="prevTestimonial()">&#10094;</button>
+      <button onclick="nextTestimonial()">&#10095;</button>
+    </div>
+  </div>
+
+  <script>
+    let testimonialIndex = 0;
+    const slides = document.getElementById("testimonialSlides");
+    const count = slides.children.length;
+
+    function showTestimonial(){
+      slides.style.transform = `translateX(-${testimonialIndex * 100}%)`;
+    }
+
+    function nextTestimonial(){
+      testimonialIndex = (testimonialIndex + 1) % count;
+      showTestimonial();
+    }
+
+    function prevTestimonial(){
+      testimonialIndex = (testimonialIndex - 1 + count) % count;
+      showTestimonial();
+    }
+
+    // Auto-play every 5 seconds
+    setInterval(nextTestimonial, 5000);
+  </script>
+</body>
+</html>

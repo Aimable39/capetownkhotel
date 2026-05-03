@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cape Town Hotel - Home</title>
+  <style>
+    body { margin:0; font-family:Arial,sans-serif; background:#f9f9f9; }
+
+    /* Navbar */
+    .navbar {
+      display:flex; justify-content:space-between; align-items:center;
+      background:white; padding:15px 40px; position:sticky; top:0;
+      z-index:1000; border-radius:50px;
+      border:2px solid black; box-shadow:0 4px 8px rgba(0,0,0,0.5);
+    }
+    .logo img { height:50px; }
+    .header-title { font-size:20px; font-weight:bold; color:#2c3e50; text-align:center; flex-grow:1; }
+    .nav-links { list-style:none; display:flex; gap:25px; margin:0; padding:0; }
+    .nav-links li a { text-decoration:none; color:#2c3e50; font-weight:bold; }
+    .nav-links li a:hover { color:#3498db; border-bottom:2px solid #3498db; }
+
+    /* Hero Section */
+    .hero {
+      background:url('hotel-hero.jpg') center/cover no-repeat;
+      min-height:70vh; display:flex; flex-direction:column;
+      align-items:center; justify-content:center;
+      color:white; text-shadow:0 2px 6px rgba(0,0,0,0.7);
+      text-align:center;
+    }
+    .hero h1 { font-size:48px; margin-bottom:10px; }
+    .hero p { font-size:20px; margin-bottom:20px; }
+    .hero button {
+      padding:12px 25px; font-size:16px; border:none; border-radius:30px;
+      background:linear-gradient(135deg,#4facfe,#00f2fe); color:white; cursor:pointer;
+    }
+    .hero button:hover { transform:scale(1.05); }
+
+    /* Services Section with background */
+    .services {
+      padding:60px 40px; text-align:center;
+      background:url('services-bg.jpg') center/cover no-repeat;
+      color:white;
+    }
+    .services h2 { font-size:32px; margin-bottom:40px; }
+    .service-grid {
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:20px;
+    }
+    .service-card {
+      background:rgba(0,0,0,0.6); border-radius:10px;
+      box-shadow:0 4px 8px rgba(0,0,0,0.3);
+      padding:20px; transition:transform 0.3s;
+      color:white;
+    }
+    .service-card:hover { transform:translateY(-5px); }
+    .service-card img { width:100%; height:180px; object-fit:cover; border-radius:8px; }
+
+    /* Highlights Section */
+    .highlights { padding:60px 40px; text-align:center; }
+    .highlights h2 { font-size:32px; color:#2c3e50; margin-bottom:40px; }
+    .highlight-grid {
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:20px;
+    }
+    .highlight-card {
+      background:white; border-radius:10px; box-shadow:0 4px 8px rgba(0,0,0,0.1);
+      padding:20px; transition:transform 0.3s;
+    }
+    .highlight-card:hover { transform:translateY(-5px); }
+    .highlight-card img { width:100%; height:180px; object-fit:cover; border-radius:8px; }
+    .highlight-card h3 { margin:15px 0 10px; color:#3498db; }
+    .highlight-card p { color:#555; font-size:14px; }
+
+    /* Footer */
+    footer { background:#333; color:white; text-align:center; padding:20px; margin-top:40px; }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo"><img src="12.png" alt="Hotel Logo"></div>
+    <div class="header-title">Cape Town Hotel</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="aboutus.html">About Us</a></li>
+      <li><a href="rooms.html">Rooms</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="ourservices.html">Our Services</a></li>
+      <li><a href="contact.html">Location & Map</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <section class="hero">
+  <h1>Pickup In Kigali free charge!!</h1>
+</section>
+
+<style>
+.hero {
+  background:url('3210.png') center/cover no-repeat;
+  min-height:70vh; /* uburebure bw’iyo section */
+  display:flex; align-items:center; justify-content:center;
+  color:white; text-shadow:0 2px 6px rgba(0,0,0,0.7);
+}
+.hero h1 {
+  font-size:48px;
+}
+</style>
+
+    <p>Luxury, Comfort, and Unforgettable Experiences</p>
+    <button onclick="window.location.href='rooms.html'">Book Your Stay</button>
+  </section>
+
+  <!-- Services Section -->
+  <section class="services">
+    <h2>Our Services</h2>
+    <div class="service-grid">
+      <div class="service-card">
+        <img src="7.png" alt="Dining Service">
+        <h3>Fine Dining</h3>
+        <p>Enjoy delicious meals prepared by our expert chefs.</p>
+      </div>
+      <div class="service-card">
+        <img src="25.png" alt="Spa Massage">
+        <h3>Spa & Wellness</h3>
+        <p>Relax and rejuvenate with sauna and massage services.</p>
+      </div>
+      <div class="service-card">
+        <img src="11.png" alt="Bar Service">
+        <h3>Stylish Bar</h3>
+        <p>Unwind with cocktails and drinks in a cozy atmosphere.</p>
+      </div>
+      <div class="service-card">
+        <img src="s.png" alt="Accommodation">
+        <h3>Accommodation</h3>
+        <p>Comfortable rooms and suites designed for your stay.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Highlights Section -->
+  <section class="highlights">
+    <h2>Discover Our Highlights</h2>
+    <div class="highlight-grid">
+      <div class="highlight-card">
+        <img src="s.png" alt="Rooms">
+        <h3>Elegant Rooms</h3>
+        <p>Spacious and stylish rooms designed for your comfort.</p>
+      </div>
+      <div class="highlight-card">
+        <img src="7.png" alt="Dining">
+        <h3>Fine Dining</h3>
+        <p>Delicious meals prepared by our expert chefs.</p>
+      </div>
+      <div class="highlight-card">
+        <img src="25.png" alt="Spa">
+        <h3>Spa & Wellness</h3>
+        <p>Relax with sauna and professional massage services.</p>
+      </div>
+      <div class="highlight-card">
+        <img src="11.png" alt="Bar">
+        <h3>Stylish Bar</h3>
+        <p>Unwind with cocktails and drinks in a cozy atmosphere.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Cape Town Hotel | Kigali, Rwanda</p>
+    <p>Email: info@capetownhotel.com | Phone: +250 781869797</p>
+  </footer>
+</body>
+</html>

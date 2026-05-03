@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="rw">
+<head>
+  <meta charset="UTF-8">
+  <title>Cape Town Hotel - Gallery</title>
+  <style>
+    body { margin:0; font-family:Arial,sans-serif; background:#f9f9f9; }
+    .navbar { display:flex; justify-content:space-between; align-items:center;
+      background:white; padding:15px 40px; position:sticky; top:0;
+      border-radius:50px; border:2px solid black;
+      box-shadow:0 4px 8px rgba(0,0,0,0.5); }
+    .logo img { height:50px; }
+    .header-title { font-size:20px; font-weight:bold; color:#2c3e50; flex-grow:1; text-align:center; }
+    .nav-links { list-style:none; display:flex; gap:25px; margin:0; padding:0; }
+    .nav-links li a { color:#2c3e50; text-decoration:none; font-weight:bold; }
+    .nav-links li a:hover { color:#3498db; border-bottom:2px solid #3498db; }
+
+    h1 { text-align:center; margin:30px 0; color:#3498db; }
+
+    .gallery { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:20px; padding:20px; max-width:1200px; margin:auto; }
+
+    .card { background:white; border-radius:12px; box-shadow:0 3px 8px rgba(0,0,0,0.15);
+      position:relative; overflow:hidden; }
+    .slides-wrapper { width:100%; overflow:hidden; }
+    .slides { display:flex; transition:transform 0.8s ease-in-out; }
+    .slides img { width:100%; flex-shrink:0; height:250px; object-fit:cover; }
+    .controls { position:absolute; top:50%; width:100%; display:flex; justify-content:space-between; }
+    .controls button { background:rgba(0,0,0,0.5); color:white; border:none; padding:10px; cursor:pointer; }
+
+    footer { background:#333; color:white; text-align:center; padding:20px; margin-top:40px; }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo"><img src="12.png" alt="Hotel Logo"></div>
+    <div class="header-title">Cape Town K Hotel</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="aboutus.html">About Us</a></li>
+      <li><a href="#">Rooms</a></li>
+	  <li><a href="ourservices.html">Our Services</a></li>
+      <li><a href="#">Location/Map</a></li>
+    </ul>
+  </nav>
+
+  <!-- Gallery -->
+  <h1>Our Gallery</h1>
+  <div class="gallery">
+    <!-- Card 1 -->
+    <div class="card">
+      <div class="slides-wrapper">
+        <div class="slides" id="slides1">
+          <img src="1.png" alt="Exterior">
+          <img src="22.png" alt="Lobby">
+          <img src="15.png" alt="Room">
+        </div>
+      </div>
+      <div class="controls">
+        <button onclick="prevSlide('slides1')">&#10094;</button>
+        <button onclick="nextSlide('slides1')">&#10095;</button>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card">
+      <div class="slides-wrapper">
+        <div class="slides" id="slides2">
+          <img src="2.png" alt="Dining">
+          <img src="11.png" alt="Bar">
+          <img src="25.png" alt="Conference">
+        </div>
+      </div>
+      <div class="controls">
+        <button onclick="prevSlide('slides2')">&#10094;</button>
+        <button onclick="nextSlide('slides2')">&#10095;</button>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card">
+      <div class="slides-wrapper">
+        <div class="slides" id="slides3">
+          <img src="122.png" alt="Garden">
+          <img src="144.png" alt="Reception">
+          <img src="17.png" alt="Suite">
+        </div>
+      </div>
+      <div class="controls">
+        <button onclick="prevSlide('slides3')">&#10094;</button>
+        <button onclick="nextSlide('slides3')">&#10095;</button>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="card">
+      <div class="slides-wrapper">
+        <div class="slides" id="slides4">
+          <img src="20.png" alt="Gym">
+          <img src="23.png" alt="Sauna">
+          <img src="13.png" alt="Terrace">
+        </div>
+      </div>
+      <div class="controls">
+        <button onclick="prevSlide('slides4')">&#10094;</button>
+        <button onclick="nextSlide('slides4')">&#10095;</button>
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="card">
+      <div class="slides-wrapper">
+        <div class="slides" id="slides5">
+          <img src="4.png" alt="Restaurant">
+          <img src="7.png" alt="Buffet">
+          <img src="16.png" alt="Chef">
+        </div>
+      </div>
+      <div class="controls">
+        <button onclick="prevSlide('slides5')">&#10094;</button>
+        <button onclick="nextSlide('slides5')">&#10095;</button>
+      </div>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="card">
+      <div class="slides-wrapper">
+        <div class="slides" id="slides6">
+          <img src="9.png" alt="Spa Room">
+          <img src="11.png" alt="Massage">
+          <img src="s.png" alt="Jacuzzi">
+        </div>
+      </div>
+      <div class="controls">
+        <button onclick="prevSlide('slides6')">&#10094;</button>
+        <button onclick="nextSlide('slides6')">&#10095;</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <<p>&copy; 2026 Cape K Town Hotel | Kigali, Rwanda</p>
+    <p>Email: capetownKhotel.com | Phone: +250 781869797</p>
+  </footer>
+
+  <script>
+    const indices = { slides1:0, slides2:0, slides3:0, slides4:0, slides5:0, slides6:0 };
+
+    function showSlide(id){
+      const slides = document.getElementById(id);
+      const index = indices[id];
+      slides.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    function nextSlide(id){
+      const slides = document.getElementById(id);
+      const count = slides.children.length;
+      indices[id] = (indices[id] + 1) % count;
+      showSlide(id);
+    }
+
+    function prevSlide(id){
+      const slides = document.getElementById(id);
+      const count = slides.children.length;
+      indices[id] = (indices[id] - 1 + count) % count;
+      showSlide(id);
+    }
+
+    // Auto-play slideshow for all cards
+    setInterval(() => {
+      for (let id in indices) {
+        nextSlide(id);
+      }
+    }, 4000); // 4 seconds interval
+  </script>
+</body>
+</html>

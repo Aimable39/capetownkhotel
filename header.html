@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lemigo Style Hotel - Header</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Navbar style */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(to right, #2c3e50, #3498db);
+      padding: 15px 40px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+
+      /* Izenguruke ku mpande zombi */
+      border-radius: 50px; 
+    }
+
+    .logo img {
+      height: 50px;
+      max-width: 100%;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links li {
+      position: relative;
+    }
+
+    .nav-links li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+      transition: color 0.3s, border-bottom 0.3s;
+    }
+
+    .nav-links li a:hover {
+      color: #f1c40f;
+      border-bottom: 2px solid #f1c40f;
+      padding-bottom: 3px;
+    }
+
+    /* Dropdown menu */
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #2c3e50;
+      list-style: none;
+      padding: 10px 0;
+      min-width: 180px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+      border-radius: 20px;
+    }
+
+    .dropdown-menu li {
+      padding: 8px 20px;
+    }
+
+    .dropdown-menu li a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      display: block;
+    }
+
+    .dropdown-menu li a:hover {
+      color: #f1c40f;
+    }
+
+    /* Show dropdown on hover (desktop) */
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+
+    /* Responsive toggle */
+    .menu-toggle {
+      display: none;
+      font-size: 24px;
+      color: white;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background: #2c3e50;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 200px;
+        border-radius: 20px;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+      }
+      .nav-links.show {
+        display: flex;
+        transform: translateX(0);
+      }
+      .menu-toggle {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <img src="logo.png" alt="Hotel Logo">
+      </div>
+      <span class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</span>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About Us</a></li>
+        <li class="dropdown">
+          <a href="#">Rooms ▾</a>
+          <ul class="dropdown-menu">
+            <li><a href="deluxe.html">Deluxe Room</a></li>
+            <li><a href="executive.html">Executive Suite</a></li>
+            <li><a href="presidential.html">Presidential Suite</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Dining</a></li>
+        <li><a href="#">Spa</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <script>
+    // Toggle menu for mobile
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+  </script>
+</body>
+</html>
